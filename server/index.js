@@ -9,6 +9,7 @@ import morgan from 'morgan';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import authRoutes from './routes/auth.js';
+import userRoutes from './routes/users.js';
 import { register } from './controllers/auth.js';
 import { verifyToken } from './middleware/auth.js';
 
@@ -42,7 +43,9 @@ const upload = multer({ storage });
 app.post('/auth/register', upload.single('picture'), register);
 
 /* Routes */
-app.post("/auth", authRoutes);
+app.use('/auth', authRoutes);
+app.use('/users', userRoutes);
+// app.use('/posts', postRoutes);
 
 /* MONGOOS setup */
 const PORT = process.env.PORT || 6001;
