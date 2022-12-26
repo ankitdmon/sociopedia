@@ -63,7 +63,7 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`Server port: ${PORT}`));
 
-    /* ADD DATA ONE TIME */
+    /* ADD DATA ONE TIME THEN COMMENT OTHERWISE THERE WILL BE DUPLICATE DATA*/
     User.insertMany(users);
     Post.insertMany(posts);
   })
